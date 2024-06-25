@@ -15,5 +15,11 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->get('pelicula/edit/(num)','Pelicula::create/$1');
 
 
-$routes->presenter('pelicula');
-$routes->presenter('categoria');
+//$routes->presenter('pelicula',['controller'=> 'Pelicula']);
+//$routes->presenter('categoria',['controller'=>'Dashboard\Categoria']);
+//,['controller'=>'Dashboard\Pelicula']
+
+$routes->group('dashboard', function($routes) {
+    $routes->presenter('pelicula', ['controller' => 'Dashboard\Pelicula']);
+    $routes->presenter('categoria', ['controller' => 'Dashboard\Categoria']);
+});

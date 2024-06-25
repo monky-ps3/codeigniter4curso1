@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar Pelicula</title>
+    <title>Crear Pelicula</title>
 </head>
 <body>
-    <form action="<?php echo base_url()?>/categoria/update/<?php echo $categoria['id']?>" method="post">
+    <form action="dashboard/create" method="post">
         <label for="titulo">Titulo</label>
-        <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo $categoria['titulo']?>">
-       
-       
+        <input type="text" name="titulo" id="titulo" placeholder="titulo">
+      
          <button type="submit">Enviar</button>
     </form>
 </body>
