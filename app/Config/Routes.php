@@ -16,3 +16,4 @@ use CodeIgniter\Router\RouteCollection;
 
 
 $routes->presenter('pelicula');
+$routes->presenter('categoria');
