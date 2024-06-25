@@ -12,7 +12,7 @@
     <div>
         <table>
         <td><a href="pelicula/new/">Crear</a></td>
-            <tr>
+            <tr>mmmmmmmmm
                 <th>Id</th>
                 <th>Titulo</th>
                 <th>Descripcion</th>
