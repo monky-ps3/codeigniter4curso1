@@ -6,6 +6,7 @@
     <title>Actualizar Pelicula</title>
 </head>
 <body>
+  
     <form action="<?php echo base_url()?>dashboard/categoria/update/<?php echo $categoria['id']?>" method="post">
         <label for="titulo">Titulo</label>
         <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo $categoria['titulo']?>">

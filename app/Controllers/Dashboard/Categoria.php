@@ -15,11 +15,13 @@ class Categoria extends BaseController
     }
     public function show($id)
     {
+      
         $categoriaModel = new CategoriaModel();
 
         echo view('dashboard/categoria/show', [
             'categoria' => $categoriaModel->find($id)
         ]);
+        
     }
     public function create()
     {
@@ -31,8 +33,7 @@ class Categoria extends BaseController
         ];
 
         $categoriaModel->save($data);
-         echo "insertado correcto";
-
+        return redirect()->to('dashboard/categoria')->with('mensaje','Registro gestionado correctamente');
 
         // $peliculaModel->insert([
 
@@ -54,16 +55,20 @@ class Categoria extends BaseController
            
             ]);
 
-            echo "update ";
+            return redirect()->to('dashboard/categoria')->with('mensaje','Actualizacion  correctamente');
+
     }
     public function delete($id){
         $categoriaModel = new CategoriaModel();
         $categoriaModel->delete($id);
-        echo "delete";
+        session()->setFlashdata('mensaje',' gestionado Eliminado correctamente');
+        return redirect()->back();
+       // return redirect()->to('dashboard/categoria')->with('mensaje',' gestionado Eliminado correctamente');
+
     }
     public function index()
     {
-
+        session()->set('key','value');
         //$data=[];
         $categoriaModel = new CategoriaModel();
 

@@ -10,6 +10,7 @@
 <body>
     <h1>estos es una pelicula</h1>
     <div>
+    <?php echo view('partials/_session');?>
         <table>
         <td><a href="categoria/new/">Crear</a></td>
             <tr>

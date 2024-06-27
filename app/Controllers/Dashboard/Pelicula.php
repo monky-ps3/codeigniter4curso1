@@ -31,7 +31,7 @@ class Pelicula extends BaseController
         ];
 
         $peliculaModel->save($data);
-         echo "insertado correcto";
+        return redirect()->to('dashboard/pelicula')->with('mensaje','insertado   correctamente');
 
 
         // $peliculaModel->insert([
@@ -54,12 +54,14 @@ class Pelicula extends BaseController
             'descripcion'=>$this->request->getPost('descripcion')
             ]);
    
-          return redirect()->to('pelicula');
+            return redirect()->to('dashboard/pelicula')->with('mensaje','actualizado  correctamente');
+
     }
     public function delete($id){
         $peliculaModel = new PeliculaModel();
         $peliculaModel->delete($id);
-        echo "delete";
+        return redirect()->to('dashboard/pelicula')->with('mensaje','Eliminado  correctamente');
+
     }
     public function index()
     {

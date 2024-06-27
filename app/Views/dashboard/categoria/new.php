@@ -6,7 +6,8 @@
     <title>Crear Pelicula</title>
 </head>
 <body>
-    <form action="dashboard/create" method="post">
+    
+    <form action="create" method="post">
         <label for="titulo">Titulo</label>
         <input type="text" name="titulo" id="titulo" placeholder="titulo">
       
