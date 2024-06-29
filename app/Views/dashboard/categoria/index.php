@@ -24,13 +24,14 @@ Listado de categoías
         foreach ($nombrevariablevista2 as $key => $value) {
         ?>
             <tr>
-                <td><?php echo $value['id'] ?></td>
-                <td><?php echo $value['titulo'] ?></td>
+                <!--impresion para arreglos  <td>/*echo $value['id']*/</td>-->
+                <td><?php echo $value->id ?></td>
+                <td><?php echo $value->titulo ?></td>
 
-                <td><a href="categoria/show/<?php echo $value['id'] ?>">Mostrar</a></td>
-                <td><a href="categoria/edit/<?php echo $value['id'] ?>">Edit</a></td>
+                <td><a href="categoria/show/<?php echo $value->id ?>">Mostrar</a></td>
+                <td><a href="categoria/edit/<?php echo $value->id ?>">Edit</a></td>
                 <td>
-                    <form action="categoria/delete/<?php echo $value['id'] ?>" method="post">
+                    <form action="categoria/delete/<?php echo $value->id ?>" method="post">
                         <button type="submit">Delete</button>
                     </form>
                 </td>
