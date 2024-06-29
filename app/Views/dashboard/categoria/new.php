@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Pelicula</title>
-</head>
-<body>
-    
+<?= $this->extend('Layouts/dashboard') ?>
+
+<?= $this->section('contenido') ?>
+<?php echo view('partials/_form-error'); ?>
     <form action="create" method="post">
         <label for="titulo">Titulo</label>
-        <input type="text" name="titulo" id="titulo" placeholder="titulo">
+        <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo old('titulo')?>" >
       
          <button type="submit">Enviar</button>
     </form>
-</body>
-</html>
+    <?= $this->endSection() ?>

@@ -15,60 +15,91 @@ class Categoria extends BaseController
     }
     public function show($id)
     {
-      
+
         $categoriaModel = new CategoriaModel();
 
         echo view('dashboard/categoria/show', [
             'categoria' => $categoriaModel->find($id)
         ]);
-        
     }
     public function create()
     {
 
         $categoriaModel = new CategoriaModel();
-        $data = [
-            'titulo' => $this->request->getPost('titulo'),
-           
-        ];
+
+
+        if ($this->validate('categorias')) {
+            $data = [
+                'titulo' => $this->request->getPost('titulo'),
+
+            ];
+        } else {
+            session()->setFlashdata([
+                'validation' => $this->validator
+            ]);
+            //funcion interna que devulede los campos anterioes 
+            return redirect()->back()->withInput();
+        }
 
         $categoriaModel->save($data);
-        return redirect()->to('dashboard/categoria')->with('mensaje','Registro gestionado correctamente');
+        return redirect()->to('dashboard/categoria')->with('mensaje', 'Registro gestionado correctamente');
+
+
+
 
         // $peliculaModel->insert([
 
         //     'titulo' => $this->request->getPost('titulo'),
         //     'descripcion'    => $this->request->getPost('descripcion'),
         // ]);
+
+
+
+
+
+
+
+
+
+
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $categoriaModel = new CategoriaModel();
 
-       echo view('dashboard/categoria/edit',['categoria'=>$categoriaModel->find($id)]);
+        echo view('dashboard/categoria/edit', ['categoria' => $categoriaModel->find($id)]);
     }
-    public function update($id){
+    public function update($id)
+    {
         $categoriaModel = new CategoriaModel();
 
-        $categoriaModel->update($id,[
-            'titulo'=> $this->request->getPost('titulo')
-           
+        if ($this->validate('categorias')) {
+            $categoriaModel->update($id, [
+                'titulo' => $this->request->getPost('titulo')
+
             ]);
-
-            return redirect()->to('dashboard/categoria')->with('mensaje','Actualizacion  correctamente');
-
+        } else {
+            session()->setFlashdata([
+                'validation' => $this->validator
+            ]);
+            //funcion interna que devulede los campos anterioes 
+            return redirect()->back()->withInput();
+        }
+        return redirect()->to('dashboard/categoria')->with('mensaje', 'Actualizacion  correctamente');
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $categoriaModel = new CategoriaModel();
         $categoriaModel->delete($id);
-        session()->setFlashdata('mensaje',' gestionado Eliminado correctamente');
+        session()->setFlashdata('mensaje', ' gestionado Eliminado correctamente');
         return redirect()->back();
-       // return redirect()->to('dashboard/categoria')->with('mensaje',' gestionado Eliminado correctamente');
+        // return redirect()->to('dashboard/categoria')->with('mensaje',' gestionado Eliminado correctamente');
 
     }
     public function index()
     {
-        session()->set('key','value');
+        session()->set('key', 'value');
         //$data=[];
         $categoriaModel = new CategoriaModel();
 
