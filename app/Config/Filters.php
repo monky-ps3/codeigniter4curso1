@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\DashboardFilter;
 use App\Filters\Session;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
@@ -9,6 +10,7 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class Filters extends BaseConfig
 {
@@ -26,9 +28,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'auth'     => \App\Filters\SessionAdmin::class, // Añade tu filtro aquí
-
-        ///
-
+        'DashboardFilter' => \App\Filters\DashboardFilter::class, // Definición de tu filtro para el dashboard
     ];
 
     /**
@@ -74,10 +74,17 @@ class Filters extends BaseConfig
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [
-        "auth" => [
-            "before" => ["/inicio"
-            ]
-        ]
+  public array $filters = [
+        'auth' => [
+            'before' => [
+                'inicio',  // Ruta a proteger con el filtro de autenticación
+            ],
+        ],
+        'DashboardFilter' => [
+            'before' => [
+                'dashboard',
+                'dashboard/*',  // Todas las rutas que comiencen con dashboard/
+            ],
+        ],
     ];
 }
