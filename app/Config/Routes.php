@@ -19,6 +19,12 @@ use CodeIgniter\Router\RouteCollection;
 //$routes->presenter('categoria',['controller'=>'Dashboard\Categoria']);
 //,['controller'=>'Dashboard\Pelicula']
 
+
+$routes->group('api', ['namespace'=>'App\Controllers\Api'], function($routes) {
+$routes->resource('pelicula');
+});
+
+
 $routes->group('dashboard', function($routes) {
     $routes->presenter('pelicula', ['controller' => 'Dashboard\Pelicula']);
     $routes->presenter('categoria', ['controller' => 'Dashboard\Categoria']);
